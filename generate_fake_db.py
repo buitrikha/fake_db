@@ -93,18 +93,37 @@ mon_hoc_names = [
     'Toán cao cấp', 'Vật lý đại cương', 'Hóa học đại cương', 'Sinh học',
     'Kinh tế vĩ mô', 'Kinh tế vi mô', 'Marketing căn bản', 'Quản trị học',
     'Tiếng Anh 1', 'Tiếng Anh 2', 'Tiếng Anh 3', 'Tiếng Anh 4',
-    'Triết học Mác-Lênin', 'Tư tưởng HCM', 'Đường lối ĐCS VN', 'Pháp luật đại cương'
+    'Triết học Mác-Lênin', 'Tư tưởng HCM', 'Đường lối ĐCS VN', 'Pháp luật đại cương',
+    'Lập trình Hướng đối tượng', 'Lập trình Python', 'Lập trình Web', 'Lập trình di động',
+    'Công nghệ phần mềm', 'Kiểm thử phần mềm', 'Quản lý dự án phần mềm',
+    'Phân tích & Thiết kế hệ thống', 'Phân tích & Thiết kế hướng đối tượng', 'Các mẫu thiết kế',
+    'Lập trình .NET', 'Tương tác Người – Máy', 'Mạng máy tính', 'Hệ điều hành',
+    'Kiến trúc máy tính', 'Quản trị mạng', 'Quản trị hệ thống', 'Điện toán đám mây',
+    'Lập trình hệ thống', 'Điện toán song song & Phân tán', 'Hệ quản trị Cơ sở dữ liệu',
+    'Trí tuệ nhân tạo', 'Học máy', 'Khai phá dữ liệu', 'Xử lý ngôn ngữ tự nhiên',
+    'Thị giác máy tính', 'Big Data', 'An toàn thông tin', 'Mật mã học', 'An ninh mạng',
+    'Toán rời rạc', 'Xác suất thống kê', 'Đại số tuyến tính', 'Phương pháp tính',
+    'Lý thuyết đồ thị', 'Vật lý 2', 'Toán cao cấp 3', 'Logic học',
+    'Lý thuyết thông tin', 'Tối ưu hóa',
+    'Kỹ thuật điện', 'Điện tử cơ bản', 'Kỹ thuật số', 'Vi xử lý & Vi điều khiển',
+    'Tín hiệu và Hệ thống', 'Xử lý tín hiệu số', 'Lý thuyết điều khiển tự động',
+    'Thông tin vô tuyến', 'Thông tin quang', 'Lập trình nhúng',
+    'Nguyên lý Kế toán', 'Tài chính doanh nghiệp', 'Quản trị nhân sự', 'Quản trị chiến lược',
+    'Thương mại điện tử', 'Hệ thống thông tin quản lý', 'Luật kinh tế', 'Luật Sở hữu trí tuệ',
+    'Quản trị rủi ro', 'Logistics và Quản lý chuỗi cung ứng',
+    'Kinh tế chính trị Mác-Lênin', 'Chủ nghĩa xã hội khoa học', 'Lịch sử Đảng Cộng sản Việt Nam',
+    'Tâm lý học đại cương', 'Xã hội học đại cương', 'Cơ sở văn hóa Việt Nam', 'Lịch sử văn minh thế giới',
+    'Nhập môn Truyền thông', 'Đạo đức kỹ thuật', 'Tiếng Nhật',
+    'Giáo dục thể chất 1', 'Giáo dục thể chất 2', 'Giáo dục thể chất 3',
+    'Giáo dục Quốc phòng & An ninh 1', 'Giáo dục Quốc phòng & An ninh 2', 'Giáo dục Quốc phòng & An ninh 3',
+    'Phương pháp nghiên cứu khoa học', 'Kỹ năng mềm', 'Tư duy phản biện', 'Khởi nghiệp & Đổi mới sáng tạo'
 ]
 
 # Tạo thêm môn học để đủ 100
 for i in range(100):
     ma_mh = f'MH{i+1:03d}'
     monhoc_list.append(ma_mh)
-    if i < len(mon_hoc_names):
-        ten_mh = mon_hoc_names[i]
-    else:
-        ten_mh = f'Môn học {i+1}'
-    
+    ten_mh = mon_hoc_names[i]
     cursor.execute("""
         INSERT INTO MONHOC (Ma_MH, Ten_MH, So_Tiet_LT, So_Tiet_TH, So_Tin_Chi, Ma_BM)
         VALUES (%s, %s, %s, %s, %s, %s)
