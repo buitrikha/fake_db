@@ -88,53 +88,173 @@ conn.commit()
 # 4. Tạo MONHOC (100 môn học)
 print("Đang tạo dữ liệu MONHOC...")
 monhoc_list = []
-mon_hoc_names = [
-    'Lập trình C', 'Lập trình Java', 'Cơ sở dữ liệu', 'Cấu trúc dữ liệu',
-    'Toán cao cấp', 'Vật lý đại cương', 'Hóa học đại cương', 'Sinh học',
-    'Kinh tế vĩ mô', 'Kinh tế vi mô', 'Marketing căn bản', 'Quản trị học',
-    'Tiếng Anh 1', 'Tiếng Anh 2', 'Tiếng Anh 3', 'Tiếng Anh 4',
-    'Triết học Mác-Lênin', 'Tư tưởng HCM', 'Đường lối ĐCS VN', 'Pháp luật đại cương',
-    'Lập trình Hướng đối tượng', 'Lập trình Python', 'Lập trình Web', 'Lập trình di động',
-    'Công nghệ phần mềm', 'Kiểm thử phần mềm', 'Quản lý dự án phần mềm',
-    'Phân tích & Thiết kế hệ thống', 'Phân tích & Thiết kế hướng đối tượng', 'Các mẫu thiết kế',
-    'Lập trình .NET', 'Tương tác Người – Máy', 'Mạng máy tính', 'Hệ điều hành',
-    'Kiến trúc máy tính', 'Quản trị mạng', 'Quản trị hệ thống', 'Điện toán đám mây',
-    'Lập trình hệ thống', 'Điện toán song song & Phân tán', 'Hệ quản trị Cơ sở dữ liệu',
-    'Trí tuệ nhân tạo', 'Học máy', 'Khai phá dữ liệu', 'Xử lý ngôn ngữ tự nhiên',
-    'Thị giác máy tính', 'Big Data', 'An toàn thông tin', 'Mật mã học', 'An ninh mạng',
-    'Toán rời rạc', 'Xác suất thống kê', 'Đại số tuyến tính', 'Phương pháp tính',
-    'Lý thuyết đồ thị', 'Vật lý 2', 'Toán cao cấp 3', 'Logic học',
-    'Lý thuyết thông tin', 'Tối ưu hóa',
-    'Kỹ thuật điện', 'Điện tử cơ bản', 'Kỹ thuật số', 'Vi xử lý & Vi điều khiển',
-    'Tín hiệu và Hệ thống', 'Xử lý tín hiệu số', 'Lý thuyết điều khiển tự động',
-    'Thông tin vô tuyến', 'Thông tin quang', 'Lập trình nhúng',
-    'Nguyên lý Kế toán', 'Tài chính doanh nghiệp', 'Quản trị nhân sự', 'Quản trị chiến lược',
-    'Thương mại điện tử', 'Hệ thống thông tin quản lý', 'Luật kinh tế', 'Luật Sở hữu trí tuệ',
-    'Quản trị rủi ro', 'Logistics và Quản lý chuỗi cung ứng',
-    'Kinh tế chính trị Mác-Lênin', 'Chủ nghĩa xã hội khoa học', 'Lịch sử Đảng Cộng sản Việt Nam',
-    'Tâm lý học đại cương', 'Xã hội học đại cương', 'Cơ sở văn hóa Việt Nam', 'Lịch sử văn minh thế giới',
-    'Nhập môn Truyền thông', 'Đạo đức kỹ thuật', 'Tiếng Nhật',
-    'Giáo dục thể chất 1', 'Giáo dục thể chất 2', 'Giáo dục thể chất 3',
-    'Giáo dục Quốc phòng & An ninh 1', 'Giáo dục Quốc phòng & An ninh 2', 'Giáo dục Quốc phòng & An ninh 3',
-    'Phương pháp nghiên cứu khoa học', 'Kỹ năng mềm', 'Tư duy phản biện', 'Khởi nghiệp & Đổi mới sáng tạo'
+
+# Danh sách môn học theo bộ môn (Ten_MH, So_Tiet_LT, So_Tiet_TH, So_Tin_Chi, Ma_BM)
+mon_hoc_data = [
+    # Lập trình (BM01)
+    ('Lập trình C', 45, 30, 3, 'BM01'),
+    ('Lập trình Java', 45, 30, 3, 'BM01'),
+    ('Lập trình Hướng đối tượng', 45, 30, 3, 'BM01'),
+    ('Lập trình Python', 45, 30, 3, 'BM01'),
+    ('Lập trình Web', 30, 45, 3, 'BM01'),
+    ('Lập trình di động', 30, 45, 3, 'BM01'),
+    ('Lập trình .NET', 45, 30, 3, 'BM01'),
+    ('Lập trình hệ thống', 45, 30, 3, 'BM01'),
+    ('Lập trình nhúng', 30, 30, 3, 'BM01'),
+    
+    # Mạng máy tính (BM02)
+    ('Mạng máy tính', 45, 15, 3, 'BM02'),
+    ('Quản trị mạng', 30, 30, 3, 'BM02'),
+    ('Quản trị hệ thống', 30, 30, 3, 'BM02'),
+    ('Điện toán đám mây', 45, 15, 3, 'BM02'),
+    ('Điện toán song song & Phân tán', 45, 15, 3, 'BM02'),
+    
+    # Trí tuệ nhân tạo (BM03)
+    ('Trí tuệ nhân tạo', 45, 15, 3, 'BM03'),
+    ('Học máy', 45, 30, 4, 'BM03'),
+    ('Khai phá dữ liệu', 45, 30, 3, 'BM03'),
+    ('Xử lý ngôn ngữ tự nhiên', 45, 30, 3, 'BM03'),
+    ('Thị giác máy tính', 45, 30, 4, 'BM03'),
+    ('Big Data', 45, 30, 3, 'BM03'),
+    
+    # An toàn thông tin (BM04)
+    ('An toàn thông tin', 45, 15, 3, 'BM04'),
+    ('Mật mã học', 45, 15, 3, 'BM04'),
+    ('An ninh mạng', 30, 30, 3, 'BM04'),
+    
+    # Cơ sở dữ liệu
+    ('Cơ sở dữ liệu', 45, 30, 3, 'BM01'),
+    ('Hệ quản trị Cơ sở dữ liệu', 30, 30, 3, 'BM01'),
+    
+    # Công nghệ phần mềm
+    ('Công nghệ phần mềm', 45, 15, 3, 'BM01'),
+    ('Kiểm thử phần mềm', 30, 30, 3, 'BM01'),
+    ('Quản lý dự án phần mềm', 45, 0, 3, 'BM01'),
+    ('Phân tích & Thiết kế hệ thống', 45, 15, 3, 'BM01'),
+    ('Phân tích & Thiết kế hướng đối tượng', 45, 15, 3, 'BM01'),
+    ('Các mẫu thiết kế', 45, 15, 3, 'BM01'),
+    ('Tương tác Người – Máy', 30, 30, 3, 'BM01'),
+    
+    # Cấu trúc & Hệ thống
+    ('Cấu trúc dữ liệu', 45, 30, 3, 'BM01'),
+    ('Hệ điều hành', 45, 15, 3, 'BM01'),
+    ('Kiến trúc máy tính', 45, 15, 3, 'BM01'),
+    
+    # Kế toán (BM05)
+    ('Nguyên lý Kế toán', 45, 15, 3, 'BM05'),
+    ('Kế toán tài chính', 45, 15, 3, 'BM05'),
+    ('Kế toán quản trị', 45, 15, 3, 'BM05'),
+    
+    # Tài chính (BM06)
+    ('Tài chính doanh nghiệp', 45, 0, 3, 'BM06'),
+    ('Quản trị tài chính', 45, 0, 3, 'BM06'),
+    ('Quản trị rủi ro', 45, 0, 3, 'BM06'),
+    
+    # Marketing (BM07)
+    ('Marketing căn bản', 45, 0, 3, 'BM07'),
+    ('Marketing trực tuyến', 45, 0, 3, 'BM07'),
+    ('Hành vi người tiêu dùng', 45, 0, 3, 'BM07'),
+    
+    # Quản trị kinh doanh (BM08)
+    ('Quản trị học', 45, 0, 3, 'BM08'),
+    ('Quản trị nhân sự', 45, 0, 3, 'BM08'),
+    ('Quản trị chiến lược', 45, 0, 3, 'BM08'),
+    ('Quản trị vận hành', 45, 0, 3, 'BM08'),
+    ('Logistics và Quản lý chuỗi cung ứng', 45, 0, 3, 'BM08'),
+    
+    # Kinh tế
+    ('Kinh tế vĩ mô', 45, 0, 3, 'BM05'),
+    ('Kinh tế vi mô', 45, 0, 3, 'BM05'),
+    ('Kinh tế chính trị Mác-Lênin', 30, 0, 2, 'BM05'),
+    
+    # Cơ khí (BM09)
+    ('Cơ học kỹ thuật', 45, 15, 3, 'BM09'),
+    ('Vẽ kỹ thuật', 30, 30, 3, 'BM09'),
+    ('Sức bền vật liệu', 45, 15, 3, 'BM09'),
+    
+    # Tự động hóa (BM10)
+    ('Lý thuyết điều khiển tự động', 45, 15, 3, 'BM10'),
+    ('PLC & SCADA', 30, 30, 3, 'BM10'),
+    
+    # Điện tử viễn thông (BM11)
+    ('Kỹ thuật điện', 45, 15, 3, 'BM11'),
+    ('Điện tử cơ bản', 45, 30, 3, 'BM11'),
+    ('Kỹ thuật số', 45, 30, 3, 'BM11'),
+    ('Vi xử lý & Vi điều khiển', 30, 30, 3, 'BM11'),
+    ('Tín hiệu và Hệ thống', 45, 15, 3, 'BM11'),
+    ('Xử lý tín hiệu số', 45, 15, 3, 'BM11'),
+    ('Thông tin vô tuyến', 45, 15, 3, 'BM11'),
+    ('Thông tin quang', 45, 15, 3, 'BM11'),
+    
+    # Kỹ thuật xây dựng (BM12)
+    ('Kỹ thuật thi công', 45, 15, 3, 'BM12'),
+    ('Cơ học đất', 45, 15, 3, 'BM12'),
+    
+    # Tiếng Anh (BM13)
+    ('Tiếng Anh 1', 45, 0, 3, 'BM13'),
+    ('Tiếng Anh 2', 45, 0, 3, 'BM13'),
+    ('Tiếng Anh 3', 45, 0, 3, 'BM13'),
+    ('Tiếng Anh 4', 45, 0, 3, 'BM13'),
+    ('Tiếng Anh chuyên ngành', 45, 0, 3, 'BM13'),
+    
+    # Tiếng Trung (BM14)
+    ('Tiếng Trung 1', 45, 0, 3, 'BM14'),
+    ('Tiếng Trung 2', 45, 0, 3, 'BM14'),
+    
+    # Tiếng Nhật (BM15)
+    ('Tiếng Nhật 1', 45, 0, 3, 'BM15'),
+    ('Tiếng Nhật 2', 45, 0, 3, 'BM15'),
+    
+    # Tiếng Hàn (BM16)
+    ('Tiếng Hàn 1', 45, 0, 3, 'BM16'),
+    ('Tiếng Hàn 2', 45, 0, 3, 'BM16'),
+    
+    # Toán học (BM17)
+    ('Toán cao cấp 1', 45, 15, 3, 'BM17'),
+    ('Toán cao cấp 2', 45, 15, 3, 'BM17'),
+    ('Toán cao cấp 3', 45, 15, 3, 'BM17'),
+    ('Toán rời rạc', 45, 0, 3, 'BM17'),
+    ('Xác suất thống kê', 45, 15, 3, 'BM17'),
+    ('Đại số tuyến tính', 45, 0, 3, 'BM17'),
+    ('Phương pháp tính', 45, 15, 3, 'BM17'),
+    ('Lý thuyết đồ thị', 45, 0, 3, 'BM17'),
+    ('Lý thuyết thông tin', 45, 0, 3, 'BM17'),
+    ('Tối ưu hóa', 45, 15, 3, 'BM17'),
+    ('Logic học', 45, 0, 3, 'BM17'),
+    
+    # Vật lý (BM18)
+    ('Vật lý đại cương 1', 45, 15, 3, 'BM18'),
+    ('Vật lý đại cương 2', 45, 15, 3, 'BM18'),
+    
+    # Hóa học (BM19)
+    ('Hóa học đại cương', 45, 15, 3, 'BM19'),
+    ('Hóa học hữu cơ', 45, 30, 3, 'BM19'),
+    
+    # Sinh học (BM20)
+    ('Sinh học đại cương', 45, 15, 3, 'BM20'),
+    ('Sinh lý học', 45, 15, 3, 'BM20'),
+    
+    # Môn chung
+    ('Triết học Mác-Lênin', 45, 0, 3, 'BM17'),
+    ('Tư tưởng Hồ Chí Minh', 30, 0, 2, 'BM17'),
+    ('Đường lối Đảng Cộng sản Việt Nam', 30, 0, 2, 'BM17'),
+    ('Pháp luật đại cương', 30, 0, 2, 'BM25'),
+    ('Chủ nghĩa xã hội khoa học', 30, 0, 2, 'BM17'),
+    ('Lịch sử Đảng Cộng sản Việt Nam', 30, 0, 2, 'BM17'),
+    ('Tâm lý học đại cương', 30, 0, 2, 'BM29'),
+    ('Xã hội học đại cương', 30, 0, 2, 'BM29'),
+    ('Giáo dục thể chất 1', 0, 30, 1, 'BM29'),
+    ('Giáo dục thể chất 2', 0, 30, 1, 'BM29'),
+    ('Phương pháp nghiên cứu khoa học', 30, 15, 2, 'BM17'),
 ]
 
-# Tạo thêm môn học để đủ 100
-for i in range(100):
+for i, (ten_mh, so_tiet_lt, so_tiet_th, so_tin_chi, ma_bm) in enumerate(mon_hoc_data):
     ma_mh = f'MH{i+1:03d}'
     monhoc_list.append(ma_mh)
-    ten_mh = mon_hoc_names[i]
     cursor.execute("""
         INSERT INTO MONHOC (Ma_MH, Ten_MH, So_Tiet_LT, So_Tiet_TH, So_Tin_Chi, Ma_BM)
         VALUES (%s, %s, %s, %s, %s, %s)
-    """, (
-        ma_mh,
-        ten_mh,
-        random.choice([30, 45, 60]),
-        random.choice([0, 15, 30]),
-        random.choice([2, 3, 4]),
-        random.choice(bomon_list)
-    ))
+    """, (ma_mh, ten_mh, so_tiet_lt, so_tiet_th, so_tin_chi, ma_bm))
 
 conn.commit()
 
